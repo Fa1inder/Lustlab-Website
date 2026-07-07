@@ -28,7 +28,7 @@
   <main class="flex-1 flex flex-col items-center justify-center text-center px-6 py-24">
     <div class="inline-flex items-center gap-2 bg-purple-500/10 border border-purple-500/20 rounded-full px-4 py-1.5 mb-8 text-sm text-purple-300 font-medium">
       <span class="w-1.5 h-1.5 rounded-full bg-purple-400 inline-block"></span>
-      v1.0.0 — Now available for Windows
+      <span id="version-badge">Now available for Windows</span>
     </div>
 
     <h1 class="text-5xl sm:text-6xl font-extrabold tracking-tight max-w-2xl leading-tight mb-6">
@@ -78,6 +78,20 @@
   <footer class="text-center py-8 text-xs text-white/20 border-t border-white/5">
     © 2026 Lustlab. All rights reserved.
   </footer>
+
+  <script>
+    fetch('https://api.github.com/repos/Fa1inder/Lustlab-Website/releases/latest', {
+      headers: { 'Accept': 'application/vnd.github+json' }
+    })
+    .then(r => r.json())
+    .then(d => {
+      if (d.tag_name) {
+        const v = d.tag_name.replace(/^[vV]/, '')
+        document.getElementById('version-badge').textContent = 'v' + v + ' — Now available for Windows'
+      }
+    })
+    .catch(() => {})
+  </script>
 
 </body>
 </html>
