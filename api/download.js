@@ -6,14 +6,9 @@ module.exports = async function handler(req, res) {
         'Accept': 'application/vnd.github+json'
       }
     });
-    const data = await r.json();
-    const asset = data.assets?.find(a => a.name.endsWith('.exe'));
-    if (asset) {
-      res.redirect(302, asset.browser_download_url);
-    } else {
-      res.status(503).send('Download temporarily unavailable. Please try again later.');
-    }
+    const text = await r.text();
+    res.status(200).send(`HTTP ${r.status}\n\n${text}`);
   } catch (err) {
-    res.status(503).send('Download temporarily unavailable. Please try again later.');
+    res.status(200).send(`EXCEPTION: ${err.message}`);
   }
 };
