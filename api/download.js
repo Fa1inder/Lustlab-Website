@@ -1,7 +1,10 @@
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   try {
     const r = await fetch('https://api.github.com/repos/Fa1inder/Lustlab-CRM/releases/latest', {
-      headers: { 'User-Agent': 'Lustlab-Website' }
+      headers: {
+        'User-Agent': 'Lustlab-Website',
+        'Accept': 'application/vnd.github+json'
+      }
     });
     const data = await r.json();
     const asset = data.assets?.find(a => a.name.endsWith('.exe'));
@@ -10,7 +13,7 @@ export default async function handler(req, res) {
     } else {
       res.status(503).send('Download temporarily unavailable. Please try again later.');
     }
-  } catch {
+  } catch (err) {
     res.status(503).send('Download temporarily unavailable. Please try again later.');
   }
-}
+};
