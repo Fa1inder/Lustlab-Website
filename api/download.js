@@ -1,14 +1,19 @@
 module.exports = async function handler(req, res) {
   try {
-    const r = await fetch('https://api.github.com/repos/Fa1inder/Lustlab-CRM/releases/latest', {
+    const r = await fetch('https://api.github.com/repos/Fa1inder/Lustlab-Website/releases/latest', {
       headers: {
         'User-Agent': 'Lustlab-Website',
         'Accept': 'application/vnd.github+json'
       }
     });
-    const text = await r.text();
-    res.status(200).send(`HTTP ${r.status}\n\n${text}`);
+    const data = await r.json();
+    const asset = data.assets?.find(a => a.name.endsWith('.exe'));
+    if (asset) {
+      res.redirect(302, asset.browser_download_url);
+    } else {
+      res.status(503).send('Download temporarily unavailable. Please try again later.');
+    }
   } catch (err) {
-    res.status(200).send(`EXCEPTION: ${err.message}`);
+    res.status(503).send('Download temporarily unavailable. Please try again later.');
   }
 };
