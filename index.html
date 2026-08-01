@@ -272,7 +272,7 @@
     <a href="#" class="nav-logo">Lustlab <span>CRM</span></a>
     <div class="nav-right">
       <span class="nav-ver" id="nav-ver"></span>
-      <a href="https://github.com/Fa1inder/Lustlab-Website/releases/latest" class="nav-dl">Download</a>
+      <a href="https://github.com/Fa1inder/Lustlab-Website/releases/latest" class="nav-dl" data-dl>Download</a>
     </div>
   </div>
 </nav>
@@ -285,7 +285,7 @@
     <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span>Fansly Agency CRM</div>
     <h1>Run your agency from one screen</h1>
     <p class="hero-sub">Track revenue across every creator, coordinate your chatter team, and get notified the moment a PPV sells — without logging into each account separately.</p>
-    <a href="https://github.com/Fa1inder/Lustlab-Website/releases/latest" class="hero-cta">
+    <a href="https://github.com/Fa1inder/Lustlab-Website/releases/latest" class="hero-cta" data-dl>
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       Download for Windows
     </a>
@@ -733,7 +733,7 @@
   <div class="cta-inner">
     <h2>Ready to see your whole agency in one place?</h2>
     <p class="cta-sub">Download Lustlab CRM and have your first creator connected in under five minutes.</p>
-    <a href="https://github.com/Fa1inder/Lustlab-Website/releases/latest" class="cta-btn">
+    <a href="https://github.com/Fa1inder/Lustlab-Website/releases/latest" class="cta-btn" data-dl>
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       Download for Windows
     </a>
@@ -764,9 +764,17 @@
   .then(r => r.json())
   .then(d => {
     const v = d.tag_name || ''
-    if (!v) return
-    ;[document.getElementById('nav-ver'), document.getElementById('hero-ver'), document.getElementById('footer-ver')]
-      .forEach(el => { if (el) el.textContent = v })
+    if (v) {
+      ;[document.getElementById('nav-ver'), document.getElementById('hero-ver'), document.getElementById('footer-ver')]
+        .forEach(el => { if (el) el.textContent = v })
+    }
+    const asset = (d.assets || []).find(a => /\.exe$/i.test(a.name))
+    if (asset?.browser_download_url) {
+      document.querySelectorAll('[data-dl]').forEach(el => {
+        el.href = asset.browser_download_url
+        el.setAttribute('download', asset.name)
+      })
+    }
   })
   .catch(() => {})
 </script>
