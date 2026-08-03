@@ -46,6 +46,9 @@
     .hero-sub { font-size:17px;color:var(--muted);line-height:1.65;max-width:400px;margin-bottom:36px; }
     .hero-cta { display:inline-flex;align-items:center;gap:9px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:15px;background:var(--accent);color:white;padding:14px 26px;border-radius:10px;text-decoration:none;box-shadow:0 0 28px rgba(124,58,237,.4);transition:box-shadow .2s,transform .2s; }
     .hero-cta:hover { box-shadow:0 0 44px rgba(124,58,237,.6);transform:translateY(-1px); }
+    .hero-cta-mac { display:inline-flex;align-items:center;gap:9px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:15px;border:1.5px solid rgba(124,58,237,.45);color:rgba(255,255,255,.8);padding:14px 26px;border-radius:10px;text-decoration:none;transition:border-color .2s,background .2s,transform .2s; }
+    .hero-cta-mac:hover { border-color:var(--accent);background:rgba(124,58,237,.12);transform:translateY(-1px); }
+    .dl-group { display:flex;flex-wrap:wrap;align-items:center;gap:12px; }
     .hero-meta { margin-top:18px;font-size:13px;color:var(--subtle); }
 
     /* MOCKUP */
@@ -236,6 +239,8 @@
     .cta-sub { font-size:17px;color:var(--muted);margin-bottom:36px;line-height:1.6; }
     .cta-btn { font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;background:var(--accent);color:white;padding:16px 32px;border-radius:10px;text-decoration:none;box-shadow:0 0 32px rgba(124,58,237,.4);transition:box-shadow .2s,transform .2s; }
     .cta-btn:hover { box-shadow:0 0 52px rgba(124,58,237,.6);transform:translateY(-2px); }
+    .cta-btn-mac { font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;border:1.5px solid rgba(124,58,237,.45);color:rgba(255,255,255,.8);padding:16px 32px;border-radius:10px;text-decoration:none;transition:border-color .2s,background .2s,transform .2s; }
+    .cta-btn-mac:hover { border-color:var(--accent);background:rgba(124,58,237,.12);transform:translateY(-2px); }
     .cta-fine { font-size:12px;color:var(--subtle);margin-top:14px; }
 
     /* FOOTER */
@@ -285,11 +290,17 @@
     <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span>Fansly Agency CRM</div>
     <h1>Run your agency from one screen</h1>
     <p class="hero-sub">Track revenue across every creator, coordinate your chatter team, and get notified the moment a PPV sells — without logging into each account separately.</p>
-    <a href="https://github.com/Fa1inder/Lustlab-Website/releases/latest" class="hero-cta" data-dl>
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Download for Windows
-    </a>
-    <p class="hero-meta">Free to install &middot; Windows 10/11 &middot; Subscription billed monthly after onboarding &middot; <span id="hero-ver"></span></p>
+    <div class="dl-group">
+      <a href="https://github.com/Fa1inder/Lustlab-Website/releases/latest" class="hero-cta" data-dl>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download for Windows
+      </a>
+      <a href="https://github.com/Fa1inder/Lustlab-Website/releases/latest" class="hero-cta-mac" data-dl-mac>
+        <svg width="16" height="16" viewBox="0 0 814 1000" fill="currentColor"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-37.5-155.5-103.4C114.7 794.5 67 663 67 536.3c0-221.7 144.8-338.3 287.3-338.3 75.9 0 139 50.1 186.8 50.1 45.7 0 117.3-52.9 203.2-52.9zm-83.2-161.3c-37.5 44.8-101.9 79.9-161.5 79.9-8.3 0-16.6-.9-24.9-2.6 1.6-56.5 36.1-113.8 74.4-152.8 42-43.5 108.4-75.9 165.5-78.5 1.6 8.9 2.6 17.8 2.6 25.4 0 54.2-22.4 110.5-55.9 128.5l-.2.1z"/></svg>
+        Download for Mac
+      </a>
+    </div>
+    <p class="hero-meta">Free to install &middot; Windows 10/11 &middot; macOS 12+ &middot; Subscription billed monthly after onboarding &middot; <span id="hero-ver"></span></p>
   </div>
 
   <!-- Dashboard mockup -->
@@ -733,11 +744,17 @@
   <div class="cta-inner">
     <h2>Ready to see your whole agency in one place?</h2>
     <p class="cta-sub">Download Lustlab CRM and have your first creator connected in under five minutes.</p>
-    <a href="https://github.com/Fa1inder/Lustlab-Website/releases/latest" class="cta-btn" data-dl>
-      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Download for Windows
-    </a>
-    <p class="cta-fine">Fansly supported · OnlyFans coming soon · Windows 10/11</p>
+    <div class="dl-group" style="justify-content:center;">
+      <a href="https://github.com/Fa1inder/Lustlab-Website/releases/latest" class="cta-btn" data-dl>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download for Windows
+      </a>
+      <a href="https://github.com/Fa1inder/Lustlab-Website/releases/latest" class="cta-btn-mac" data-dl-mac>
+        <svg width="17" height="17" viewBox="0 0 814 1000" fill="currentColor"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-37.5-155.5-103.4C114.7 794.5 67 663 67 536.3c0-221.7 144.8-338.3 287.3-338.3 75.9 0 139 50.1 186.8 50.1 45.7 0 117.3-52.9 203.2-52.9zm-83.2-161.3c-37.5 44.8-101.9 79.9-161.5 79.9-8.3 0-16.6-.9-24.9-2.6 1.6-56.5 36.1-113.8 74.4-152.8 42-43.5 108.4-75.9 165.5-78.5 1.6 8.9 2.6 17.8 2.6 25.4 0 54.2-22.4 110.5-55.9 128.5l-.2.1z"/></svg>
+        Download for Mac
+      </a>
+    </div>
+    <p class="cta-fine">Fansly supported · OnlyFans coming soon · Windows 10/11 · macOS 12+</p>
     <p class="cta-fine" style="margin-top:8px;">Questions? <a href="mailto:liamofm@lustlablimited.com" style="color:var(--muted);text-decoration:underline;text-underline-offset:2px;">liamofm@lustlablimited.com</a></p>
   </div>
 </div>
@@ -768,11 +785,18 @@
       ;[document.getElementById('nav-ver'), document.getElementById('hero-ver'), document.getElementById('footer-ver')]
         .forEach(el => { if (el) el.textContent = v })
     }
-    const asset = (d.assets || []).find(a => /\.exe$/i.test(a.name))
-    if (asset?.browser_download_url) {
+    const winAsset = (d.assets || []).find(a => /\.exe$/i.test(a.name))
+    if (winAsset?.browser_download_url) {
       document.querySelectorAll('[data-dl]').forEach(el => {
-        el.href = asset.browser_download_url
-        el.setAttribute('download', asset.name)
+        el.href = winAsset.browser_download_url
+        el.setAttribute('download', winAsset.name)
+      })
+    }
+    const macAsset = (d.assets || []).find(a => /\.dmg$/i.test(a.name))
+    if (macAsset?.browser_download_url) {
+      document.querySelectorAll('[data-dl-mac]').forEach(el => {
+        el.href = macAsset.browser_download_url
+        el.setAttribute('download', macAsset.name)
       })
     }
   })
